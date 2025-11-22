@@ -6,16 +6,16 @@
 #    By: juan-her <juan-her@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/21 20:57:11 by juan-her          #+#    #+#              #
-#    Updated: 2025/11/22 15:25:04 by juan-her         ###   ########.fr        #
+#    Updated: 2025/11/22 18:13:39 by juan-her         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = cc
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra -g3
 NAME = fractol
 SRC_MLX = ./minilibx-linux
 INCLUDE_MLX = -L$(SRC_MLX) -lmlx -lXext -lX11 -lm
-SRC = main.c utils.c set_data.c
+SRC = main.c utils.c set_data.c render.c julia.c mandelbrot.c handle_key.c
 OBJ_URL = ./obj
 OBJ = $(SRC:%.c=$(OBJ_URL)/%.o)
 RM = rm -rf

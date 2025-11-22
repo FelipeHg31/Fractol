@@ -6,7 +6,7 @@
 /*   By: juan-her <juan-her@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 21:48:34 by juan-her          #+#    #+#             */
-/*   Updated: 2025/11/22 15:14:42 by juan-her         ###   ########.fr       */
+/*   Updated: 2025/11/22 16:00:16 by juan-her         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,18 @@ static void ft_set_julia(t_fractol *data, char **ag, int ac)
 	if (ac == 4)
 	{
 		data->c_real = ft_atof(ag[2]);
-		data->c_img = ft_atof(ag[2]);
+		data->c_img = ft_atof(ag[3]);
 		if (data->c_real < -2.0 || data->c_real > 2.0)
 			data->c_real = -0.7;
 		if (data->c_img < -2.0 || data->c_img > 2.0)
 			data->c_img = 0.27015;
+	}
+	else if (ac == 4)
+	{
+		data->c_real = ft_atof(ag[2]);
+		if (data->c_real < -2.0 || data->c_real > 2.0)
+			data->c_real = -0.7;
+		data->c_img = 0.27015;
 	}
 	else
 	{
@@ -47,7 +54,7 @@ static void ft_parsing(t_fractol *data, char **ag, int ac)
 	   data->fractal_type = ERROR;  
 }
 
-static int  ft_init_img(t_fractol *data)
+static void  ft_init_img(t_fractol *data)
 {
 	data->img_ptr = mlx_new_image(data->mlx_ptr, 1000, 800);
 	if (!data->img_ptr)
@@ -56,7 +63,7 @@ static int  ft_init_img(t_fractol *data)
 		mlx_destroy_window(data->mlx_ptr, data->win_ptr);
 		mlx_destroy_display(data->mlx_ptr);
 		free(data->mlx_ptr);
-		return (0);
+		return ;
 	}
 	data->img_data = mlx_get_data_addr(data->img_ptr, &data->bpp,
 			&data->size_line, &data->endian);
@@ -67,9 +74,8 @@ static int  ft_init_img(t_fractol *data)
 		mlx_destroy_window(data->mlx_ptr, data->win_ptr);
 		mlx_destroy_display(data->mlx_ptr);
 		free(data->mlx_ptr);
-		return (0);
+		return ;
 	}
-	return (1);
 }
 
 void    ft_initialization(t_fractol *data, char **ag, int ac)
@@ -93,8 +99,9 @@ void    ft_initialization(t_fractol *data, char **ag, int ac)
 		free(data->mlx_ptr);
 		return ;
 	}
-	if (ft_init_img(data))
-		ft_parsing(data, ag, ac);
+	ft_parsing(data, ag, ac);
+	if (data->fractal_type)
+		ft_init_img(data);
 	else
 		return ;
 }

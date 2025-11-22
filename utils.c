@@ -6,7 +6,7 @@
 /*   By: juan-her <juan-her@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 21:08:45 by juan-her          #+#    #+#             */
-/*   Updated: 2025/11/22 15:26:20 by juan-her         ###   ########.fr       */
+/*   Updated: 2025/11/22 15:49:40 by juan-her         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int ft_strcmp(char *str1, char *str2)
 	
 	i = 0;
 	ft_tolower(&str1);
-	while (str1[i] && str1[i])
+	while (str1[i] && str2[i])
 	{
 		if (str1[i] != str2[i])
 			return (0);
@@ -59,11 +59,10 @@ double ft_atof(char *str)
 			sign *= -1;
 		i++;
 	}
-	while (str[i] <= '0' && str[i] <= '9')
-	{
-		result = result * 10 + (str[i] - 48);
-		i++;
-	}
+	while (str[i] >= '0' && str[i] <= '9') {
+        result = result * 10 + (str[i] - '0');
+        i++;
+    }
 	if (str[i] == '.')
 	{
         i++;

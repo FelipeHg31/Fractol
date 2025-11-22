@@ -6,7 +6,7 @@
 /*   By: juan-her <juan-her@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 21:18:14 by juan-her          #+#    #+#             */
-/*   Updated: 2025/11/22 15:27:08 by juan-her         ###   ########.fr       */
+/*   Updated: 2025/11/22 18:32:35 by juan-her         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,14 @@
 # define MANDELBROT 1
 # define JULIA 2
 # define BOAT 3
+# define PLUS 61
+# define MINUS 45
+# define UP 65362
+# define DOWN 65364
+# define RIGHT 65363
+# define LEFT 65361
+# define W 119
+# define S 115
 
 typedef struct s_fractol
 {
@@ -50,5 +58,14 @@ typedef struct s_fractol
 int		ft_strcmp(char *str1, char *str2);
 double	ft_atof(char *str);
 void    ft_initialization(t_fractol *data, char **ag, int ac);
+void    ft_create_fractal(t_fractol *fractol);
+double	map_x(int x, t_fractol *fractol);
+double	map_y(int y, t_fractol *fractol);
+void    put_pixel_img(t_fractol *fractol, int x, int y, int color);
+int		get_color(int iter, int max_iter, int color_shift);
+void    ft_draw_julia(t_fractol *fractol);
+void    ft_draw_mandel(t_fractol *fractol);
+int		ft_handle_key(int key, t_fractol *fractol);
+int		ft_close_window(t_fractol *fractol);
 
 #endif
