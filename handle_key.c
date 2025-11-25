@@ -6,7 +6,7 @@
 /*   By: juan-her <juan-her@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/22 17:30:29 by juan-her          #+#    #+#             */
-/*   Updated: 2025/11/22 18:41:20 by juan-her         ###   ########.fr       */
+/*   Updated: 2025/11/22 21:54:34 by juan-her         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,13 +51,13 @@ static void ft_handle_zoom(int key, t_fractol *fractol)
         if (fractol->max_iter > 30)
             fractol->max_iter -= 10;
     }
-    ft_create_fractal(fractol);
+    ft_draw(fractol);
 }
 
 static void ft_change_color(int key, t_fractol *fractol)
 {
     if (key == COLOR)
-        fractol->color_shift += 50;
+        fractol->color_shift += 31;
 }
 
 int ft_handle_key(int key, t_fractol *fractol)
@@ -73,7 +73,7 @@ int ft_handle_key(int key, t_fractol *fractol)
     ft_handle_move(key, fractol);
     ft_handle_zoom(key, fractol);
     ft_change_color(key, fractol);
-    ft_create_fractal(fractol);
+    ft_draw(fractol);
     return (0);
 }
 

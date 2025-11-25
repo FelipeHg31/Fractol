@@ -6,20 +6,11 @@
 /*   By: juan-her <juan-her@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/22 15:14:30 by juan-her          #+#    #+#             */
-/*   Updated: 2025/11/22 16:22:22 by juan-her         ###   ########.fr       */
+/*   Updated: 2025/11/22 22:12:07 by juan-her         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
-
-void    ft_create_fractal(t_fractol *fractol)
-{
-    if (fractol->fractal_type == MANDELBROT)
-        ft_draw_mandel(fractol);
-    else if (fractol->fractal_type == JULIA)
-        ft_draw_julia(fractol);
-    mlx_put_image_to_window(fractol->mlx_ptr, fractol->win_ptr, fractol->img_ptr, 0, 0);
-}
 
 double map_x(int x, t_fractol *fractol)
 {
@@ -49,8 +40,8 @@ int get_color(int iter, int max_iter, int color_shift)
 
     if (iter >= max_iter)
         return (0x000000);
-    red = (iter * (9 + color_shift)) % 256;
-    green = (iter * (5 + color_shift)) % 256;
-    blue = (iter * (11 + color_shift)) % 256;
+    red = (iter * (4 + color_shift)) % 256;
+    green = (iter * (3 + color_shift)) % 256;
+    blue = (iter * (6 + color_shift)) % 256;
     return ((red << 16) | (green << 8) | blue);
 }

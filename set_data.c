@@ -6,7 +6,7 @@
 /*   By: juan-her <juan-her@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 21:48:34 by juan-her          #+#    #+#             */
-/*   Updated: 2025/11/22 16:00:16 by juan-her         ###   ########.fr       */
+/*   Updated: 2025/11/23 20:53:45 by juan-her         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static void ft_set_julia(t_fractol *data, char **ag, int ac)
 		if (data->c_img < -2.0 || data->c_img > 2.0)
 			data->c_img = 0.27015;
 	}
-	else if (ac == 4)
+	else if (ac == 3)
 	{
 		data->c_real = ft_atof(ag[2]);
 		if (data->c_real < -2.0 || data->c_real > 2.0)
@@ -50,6 +50,8 @@ static void ft_parsing(t_fractol *data, char **ag, int ac)
 		data->fractal_type = MANDELBROT;
 	else if (ft_strcmp(ag[1], "boat"))
 		data->fractal_type = BOAT;
+	else if (ft_strcmp(ag[1], "tricorn"))
+		data->fractal_type = TRICORN;
 	else
 	   data->fractal_type = ERROR;  
 }
@@ -82,7 +84,7 @@ void    ft_initialization(t_fractol *data, char **ag, int ac)
 {
 	data->x_offset = 0;
 	data->y_offset = 0;
-	data->color_shift = 255;
+	data->color_shift = 240;
 	data->fractal_type = ERROR;
 	data->max_iter = 100;
 	data->zoom = 1.0;
@@ -92,16 +94,18 @@ void    ft_initialization(t_fractol *data, char **ag, int ac)
 		data->fractal_type = -1;
 		return ;
 	}
-	data->win_ptr = mlx_new_window(data->mlx_ptr, 1000, 800, "fractol");
-	if (!data->win_ptr)
-	{
-		data->fractal_type = -1;
-		free(data->mlx_ptr);
-		return ;
-	}
 	ft_parsing(data, ag, ac);
 	if (data->fractal_type)
+	{
+		data->win_ptr = mlx_new_window(data->mlx_ptr, 1000, 800, "fractol");
+		if (!data->win_ptr)
+		{
+			data->fractal_type = -1;
+			free(data->mlx_ptr);
+			return ;
+		}	
 		ft_init_img(data);
+	}
 	else
 		return ;
 }

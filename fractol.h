@@ -6,7 +6,7 @@
 /*   By: juan-her <juan-her@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 21:18:14 by juan-her          #+#    #+#             */
-/*   Updated: 2025/11/22 18:32:35 by juan-her         ###   ########.fr       */
+/*   Updated: 2025/11/23 20:49:23 by juan-her         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 # define MANDELBROT 1
 # define JULIA 2
 # define BOAT 3
+# define TRICORN 4
 # define PLUS 61
 # define MINUS 45
 # define UP 65362
@@ -63,8 +64,11 @@ double	map_x(int x, t_fractol *fractol);
 double	map_y(int y, t_fractol *fractol);
 void    put_pixel_img(t_fractol *fractol, int x, int y, int color);
 int		get_color(int iter, int max_iter, int color_shift);
-void    ft_draw_julia(t_fractol *fractol);
-void    ft_draw_mandel(t_fractol *fractol);
+int		ft_calculate_julia(t_fractol *fractol, double x, double y);
+int		ft_calculate_mandel(t_fractol *fractol, double x, double y);
+int		ft_calculate_boat(t_fractol *fractol, double x, double y);
+int		ft_calculate_tricorn(t_fractol *fractol, double x, double y);
+void    ft_draw(t_fractol *fractol);
 int		ft_handle_key(int key, t_fractol *fractol);
 int		ft_close_window(t_fractol *fractol);
 
