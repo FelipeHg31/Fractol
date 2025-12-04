@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   set_data.c                                         :+:      :+:    :+:   */
+/*   set_data_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: juan-her <juan-her@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/04 18:06:22 by juan-her          #+#    #+#             */
-/*   Updated: 2025/12/04 18:08:01 by juan-her         ###   ########.fr       */
+/*   Created: 2025/11/21 21:48:34 by juan-her          #+#    #+#             */
+/*   Updated: 2025/12/04 18:10:55 by juan-her         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include "fractol_bonus.h"
 
 static void	ft_set_julia(t_fractol *data, char **ag, int ac)
 {
@@ -52,6 +52,10 @@ static void	ft_parsing(t_fractol *data, char **ag, int ac)
 	}
 	else if (ft_strcmp(ag[1], "mandelbrot") && ac == 2)
 		data->fractal_type = MANDELBROT;
+	else if (ft_strcmp(ag[1], "boat") && ac == 2)
+		data->fractal_type = BOAT;
+	else if (ft_strcmp(ag[1], "tricorn") && ac == 2)
+		data->fractal_type = TRICORN;
 	else
 		data->fractal_type = ERROR;
 }

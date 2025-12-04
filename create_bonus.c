@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   create.c                                           :+:      :+:    :+:   */
+/*   create_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: juan-her <juan-her@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/04 17:57:38 by juan-her          #+#    #+#             */
-/*   Updated: 2025/12/04 17:58:15 by juan-her         ###   ########.fr       */
+/*   Created: 2025/11/22 21:36:36 by juan-her          #+#    #+#             */
+/*   Updated: 2025/12/04 18:00:54 by juan-her         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include "fractol_bonus.h"
 
 static void	ft_draw_pixel(t_fractol *fractol, int x, int y)
 {
@@ -25,6 +25,10 @@ static void	ft_draw_pixel(t_fractol *fractol, int x, int y)
 		iter = ft_calculate_julia(fractol, real, imag);
 	else if (fractol->fractal_type == MANDELBROT)
 		iter = ft_calculate_mandel(fractol, real, imag);
+	else if (fractol->fractal_type == BOAT)
+		iter = ft_calculate_boat(fractol, real, imag);
+	else if (fractol->fractal_type == TRICORN)
+		iter = ft_calculate_tricorn(fractol, real, imag);
 	else
 		iter = ERROR;
 	color = get_color(iter, fractol->max_iter, fractol->color_shift);

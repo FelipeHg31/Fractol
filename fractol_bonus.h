@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fractol.h                                          :+:      :+:    :+:   */
+/*   fractol_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: juan-her <juan-her@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/04 17:59:51 by juan-her          #+#    #+#             */
-/*   Updated: 2025/12/04 18:10:19 by juan-her         ###   ########.fr       */
+/*   Created: 2025/11/21 21:18:14 by juan-her          #+#    #+#             */
+/*   Updated: 2025/12/04 18:00:26 by juan-her         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FRACTOL_H
-# define FRACTOL_H
+#ifndef FRACTOL_BONUS_H
+# define FRACTOL_BONUS_H
 # include "minilibx-linux/mlx.h"
 # include <math.h>
 # include <stdio.h>
@@ -69,6 +69,7 @@ int		ft_calculate_mandel(t_fractol *fractol, double x, double y);
 int		ft_calculate_boat(t_fractol *fractol, double x, double y);
 int		ft_calculate_tricorn(t_fractol *fractol, double x, double y);
 void	ft_draw(t_fractol *fractol);
+int		ft_handle_key(int key, t_fractol *fractol);
 int		ft_check_number(char *str, t_fractol *fractol);
 int		ft_handle_mouse(int button, int x, int y, t_fractol *fractol);
 int		ft_close_window(t_fractol *fractol);
